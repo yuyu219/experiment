@@ -1,0 +1,29 @@
+環境為直線節點
+
+DBS比NC多Throw欄位
+NC比nonNC多一個decode buffer
+
+實際的程式碼裡面nonNC跟DBS只差在有沒有做encode, 與刪除decode buffer的結果會差不多, 為方便處理, 僅把encode的函數註解掉
+
+編譯器為codeblocks 13.12或visual studio2017的windows form專案可使用
+
+使用方法:
+(a)修改直線節點數量
+	1. 修改全域變數中nodeNum的數量(約為第17行)
+	2. 修改全域變數中nodeseq[nodeNum]後的參數, 須為依序從0到nodeNum-1的整數(約為第21行)
+	3. 修改main()裡面nodes[nodeNum]後的參數, 方式如第2.點
+	4. 把點跟點之間的線做出來(約為原程式碼中的114到134行), 或刪掉, 沒有做錯誤處理
+
+(b)修改所有緩衝器大小
+	修改queueSize的值(約為第13行)
+
+(c)修改實驗次數
+	修改runningTime的值(約為第13行), 原始為100次
+
+(d)修改實驗時間
+	修改intervalTime的值(約為第13行), 原始為20000000us=20s
+
+
+以上均無做錯誤偵測, 任何錯誤皆可能導致結果錯誤或程式掛掉
+
+3節點會很慢, 8節點(含)以上程式有機會會掛掉, 3-7節點應該不會掛掉
